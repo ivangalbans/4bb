@@ -1,0 +1,3 @@
+(fn myiterate [f x]
+  (cons x
+    (lazy-seq (myiterate f (f x)))))

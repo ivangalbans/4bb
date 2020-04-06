@@ -1,0 +1,5 @@
+(fn [n]
+  (let [coll (map (comp read-string str) (str n))
+        mid  (quot (count coll) 2)]
+    (= (apply + (take mid coll))
+       (apply + (take-last mid coll)))))

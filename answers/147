@@ -1,0 +1,2 @@
+(fn [coll]
+  (iterate #(mapv +' (cons 0N %) (conj % 0N)) coll))

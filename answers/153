@@ -1,0 +1,2 @@
+(fn [sets]
+   (apply distinct? (apply concat sets)))

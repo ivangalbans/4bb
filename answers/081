@@ -1,0 +1,2 @@
+(fn [& sets]
+  (apply (comp set filter) sets))

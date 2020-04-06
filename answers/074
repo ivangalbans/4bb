@@ -1,0 +1,7 @@
+(fn [s]
+  (let [nums (read-string (str "[" s "]"))
+        perfect? (fn [n]
+                    (= (Math/floor (Math/sqrt n))
+                      (Math/ceil (Math/sqrt n))))
+        perfects (filter perfect? nums)]
+    (apply str (interpose "," perfects))))

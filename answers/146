@@ -1,0 +1,5 @@
+(fn [map]
+  (into {}
+        (for [[k v] map
+              [vk vv] v]
+          [[k vk] vv])))

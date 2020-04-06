@@ -1,0 +1,5 @@
+(fn [n coll]
+  (->> coll
+       (split-at (mod n (count coll)))
+       reverse
+       flatten))

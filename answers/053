@@ -1,0 +1,5 @@
+(fn [coll]
+  (let [len-subs (range (count coll) 1 -1)
+        all-subs (mapcat #(partition % 1 coll) len-subs)
+        max-sub  (some #(when (apply < %) %) all-subs)]
+    (if max-sub max-sub [])))

@@ -1,0 +1,3 @@
+(fn [s]
+   (sort-by clojure.string/lower-case
+            (re-seq #"[A-Za-z]+" s)))

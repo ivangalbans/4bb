@@ -1,0 +1,5 @@
+(fn [seq]
+  (let [mirror (fn mirror [[node left right :as tree]]
+                  (when tree
+                    [node (mirror right) (mirror left)]))]
+    (= seq (mirror seq))))

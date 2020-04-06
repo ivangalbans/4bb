@@ -1,0 +1,6 @@
+(fn [s]
+  (reduce
+    (fn [sets x]
+      (into sets (map #(conj % x) sets)))
+    #{#{}}
+    s))

@@ -1,0 +1,4 @@
+(fn infix
+  ([x op y] (op x y))
+  ([x op y & args]
+    (apply infix (cons (infix x op y) args))))

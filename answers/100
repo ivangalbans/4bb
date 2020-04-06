@@ -1,0 +1,8 @@
+(fn [& args]
+  (letfn [(gcd [a b]
+            (if (zero? b)
+              a
+              (recur b (mod a b))))
+          (lcm [a b]
+            (/ (* a b) (gcd a b)))]
+    (reduce #(lcm %1 %2) args)))

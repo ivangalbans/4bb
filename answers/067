@@ -1,0 +1,8 @@
+(fn [cnt]
+  (let [div?   (fn [n d]
+                  (zero? (mod n d)))
+        prime? (fn [n]
+                  (if (= n 2)
+                    true
+                    (not (some #(div? n %) (range 2 (inc (Math/sqrt n)))))))]
+    (take cnt (filter prime? (iterate inc 2)))))

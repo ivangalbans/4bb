@@ -1,0 +1,5 @@
+(fn [f x y]
+  (cond
+    (f x y) :lt
+    (f y x) :gt
+    :else   :eq))

@@ -1,0 +1,2 @@
+(fn [& fs]
+  (reduce (fn [f g] #(f (apply g %&))) fs))

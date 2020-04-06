@@ -1,0 +1,7 @@
+(fn [matrix]
+  (let [winner (fn [coll] (when (apply = coll) (first coll)))
+        rows   (map winner matrix)
+        cols   (map winner (apply map vector matrix))
+        diag1  (winner (map get matrix (range 3)))
+        diag2  (winner (map get matrix (range 2 -1 -1)))]
+    (some #{:x :o} (concat rows cols [diag1] [diag2]))))

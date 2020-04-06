@@ -1,0 +1,4 @@
+(fn [s]
+  (let [[x & xs] (clojure.string/split s #"-")
+        tolower #(map clojure.string/capitalize %)]
+    (apply str x (tolower xs))))

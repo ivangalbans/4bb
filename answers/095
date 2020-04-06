@@ -1,0 +1,7 @@
+(fn binary-tree? [seq]
+   (cond
+   (nil? seq) true
+   (sequential? seq) (and (= 3 (count seq))
+                           (binary-tree? (second seq))
+                           (binary-tree? (last seq)))
+   :else false))

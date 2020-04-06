@@ -1,0 +1,2 @@
+(fn [x seq]
+  (zipmap seq (repeat x)))

@@ -1,0 +1,6 @@
+(fn [f coll]
+  (reduce (fn [ac x]
+            (let [k (f x)]
+              (assoc ac k (conj (get ac k []) x))))
+          {}
+          coll))

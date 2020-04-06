@@ -1,0 +1,6 @@
+(fn [n coll]
+  (let [p (partition-by #(quot % n) coll)
+        m (mod (count coll) n)]
+    (if (zero? m)
+      p
+      (butlast p))))

@@ -1,0 +1,8 @@
+(fn [coll]
+  (letfn [(dig-sq-sum [n]
+            (->> n
+                 (str)
+                 (map #(- (int %) 48))
+                 (map #(* % %))
+                 (reduce +)))]
+    (count (filter #(< % (dig-sq-sum %)) coll))))

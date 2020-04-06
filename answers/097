@@ -1,0 +1,2 @@
+(fn [n]
+  (nth (iterate #(map + (concat [0] %) (concat % [0])) [1]) (dec n)))

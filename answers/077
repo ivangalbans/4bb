@@ -1,0 +1,6 @@
+(fn [coll]
+   (->> coll
+      (group-by frequencies)
+      (remove (comp #{1} count val))
+      (map (comp set val))
+      (set)))

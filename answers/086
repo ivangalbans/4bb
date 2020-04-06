@@ -1,0 +1,10 @@
+(fn happy-number?
+  ([n] (happy-number? n {}))
+  ([n cache]
+    (letfn [(ch->dig [ch] (- (int ch) 48))
+            (digit-sum [nn]
+              (apply + (map #(* (ch->dig %) (ch->dig %)) (str nn))))]
+      (if (contains? cache n)
+        false
+        (or (= n 1)
+            (recur (digit-sum n) (assoc cache n true)))))))

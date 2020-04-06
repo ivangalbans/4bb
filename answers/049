@@ -1,0 +1,1 @@
+(juxt take drop)

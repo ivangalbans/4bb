@@ -1,0 +1,1 @@
+#(apply merge-with + (for [x %] {x 1}))

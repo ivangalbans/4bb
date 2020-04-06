@@ -1,0 +1,8 @@
+(fn mytrampoline
+  ([f]
+    (let [ret (f)]
+      (if (fn? ret)
+        (recur ret)
+        ret)))
+  ([f & args]
+    (mytrampoline #(apply f args))))

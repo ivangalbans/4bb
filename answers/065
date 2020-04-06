@@ -1,0 +1,6 @@
+(fn [coll]
+  (let [col (conj coll [:$ :$])]
+  (cond
+    (empty? (flatten col)) (if (associative? col) :map :set)
+    (= :$ (first (conj col :$))) :list
+    (= :$ (last (conj col :$))) :vector)))
