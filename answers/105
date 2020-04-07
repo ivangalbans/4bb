@@ -1,0 +1,8 @@
+(fn [coll]
+  (->> (partition-by keyword? coll)
+       (partition-all 2)
+       (reduce (fn [ac [keys vals]]
+                 (into ac
+                       (zipmap (reverse keys)
+                               (cons vals (repeat '())))))
+               {})))

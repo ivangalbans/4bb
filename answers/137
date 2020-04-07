@@ -1,0 +1,6 @@
+(fn [n b]
+  (loop [a n
+         c []]
+    (if (< a b)
+      (cons a c)
+      (recur (int (/ a b)) (cons (rem a b) c)))))
