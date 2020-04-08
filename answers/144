@@ -1,0 +1,4 @@
+(fn [x & fs]
+  (reductions (fn [ac f]
+                (f ac))
+              x (cycle fs)))
