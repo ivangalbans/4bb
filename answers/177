@@ -1,0 +1,10 @@
+(fn [s]
+  (let [mirror   {\( \) \[ \] \{ \}}
+        bracket? (set "()[]{}")]
+    (empty?
+     (reduce (fn [[t & b :as stack] s]
+               (cond
+                 (= s (mirror t)) b
+                 (bracket? s)     (conj stack s)
+                 :else            stack))
+             () s))))

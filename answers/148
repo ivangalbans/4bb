@@ -1,0 +1,6 @@
+(fn [n a b]
+  (letfn [(sum [n] (/ (*' n (inc' n)) 2))
+          (div [x] (sum (quot (dec' n) x)))]
+    (-> (*' a (div a))
+        (+ (*' b (div b)))
+        (- (*' a b (div (*' a b)))))))

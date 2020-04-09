@@ -1,0 +1,8 @@
+(fn [pred v coll]
+  (apply concat
+         (take 1 coll)
+         (map (fn [x y]
+                (if (pred x y)
+                  [v y]
+                  [y]))
+              coll (rest coll))))

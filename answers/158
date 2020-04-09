@@ -1,0 +1,5 @@
+(fn [fc]
+  (fn [& args]
+    (reduce (fn [f x]
+              (f x))
+            fc args)))
