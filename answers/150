@@ -1,0 +1,11 @@
+(let [nextp (fn [n]
+              (let [str->long #(Long. %)
+                    long->str #(str %)
+                    nstr      (long->str n)
+                    len       (count nstr)
+                    left      (subs nstr 0 (Math/ceil (/ len 2)))
+                    left+     (-> left str->long inc long->str)
+                    buildp    (fn [s] (str->long (str s (subs (clojure.string/reverse s) (if (even? len) 0 1)))))
+                    [p1 p2]   [(buildp left) (buildp left+)]]
+                (if (>= p1 n) p1 p2)))]
+  #(iterate (comp nextp inc) (nextp %)))

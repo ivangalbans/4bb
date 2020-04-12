@@ -1,0 +1,5 @@
+(fn [trump]
+  (fn [hand]
+    (let [by-suit (group-by :suit hand)
+          win-suit (or trump (:suit (first hand)))]
+      (last (sort-by :rank (win-suit by-suit))))))

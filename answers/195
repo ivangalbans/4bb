@@ -1,0 +1,9 @@
+(fn [n]
+  (last
+   (reduce (fn [coll len]
+             (conj coll
+                   (set (for [i (range len)
+                              l (nth coll i)
+                              r (nth coll (- len 1 i))]
+                          (str "(" l ")" r)))))
+           [#{""}] (range 1 (inc n)))))

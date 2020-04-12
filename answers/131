@@ -1,0 +1,14 @@
+(fn [& sets]
+  (letfn [(subsets [s]
+            (reduce (fn [sets x]
+                      (into sets (map #(conj % x) sets)))
+                    #{#{}} s))
+          (sum-subsets [s]
+            (set
+             (for [subset (subsets s)
+                   :when (not-empty subset)]
+               (apply + subset))))]
+    (->> (map #(sum-subsets %) sets)
+         (apply clojure.set/intersection)
+         empty?
+         not)))

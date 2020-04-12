@@ -1,0 +1,11 @@
+(fn inf-mat
+  ([f]
+   (inf-mat f 0 0))
+  ([f r1 c1]
+   (inf-mat f r1 c1 -1 -1))
+  ([f r1 c1 r2 c2]
+   (letfn [(row [idx nidx]
+             (lazy-seq
+              (when-not (zero? nidx)
+                (cons idx (row (inc idx) (dec nidx))))))]
+     (map #(map (partial f %) (row c1 c2)) (row r1 r2)))))
