@@ -1,0 +1,9 @@
+#(let [t ["" "M" "MM" "MMM" "MMMM"]
+       h ["" "C" "CC" "CCC" "CD" "D" "DC" "DCC" "DCCC" "CM"]
+       d ["" "X" "XX" "XXX" "XL" "L" "LX" "LXX" "LXXX" "XC"]
+       u ["" "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX"]]
+   (str
+     (-> % (quot 1000) t)
+     (-> % (mod 1000) (quot 100) h)
+     (-> % (mod 100) (quot 10) d)
+     (-> % (mod 10) u)))
