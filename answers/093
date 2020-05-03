@@ -1,0 +1,4 @@
+(fn flatten-1 [tree]
+  (if (every? sequential? tree)
+    (mapcat flatten-1 tree)
+    [tree]))

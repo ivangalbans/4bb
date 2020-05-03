@@ -1,0 +1,6 @@
+(fn [& sqs]
+  (let [fsq (map first sqs)
+        mfs (apply max fsq)]
+    (if (apply = fsq)
+      (first fsq)
+      (recur (map (fn [sq] (drop-while #(< % mfs) sq)) sqs)))))

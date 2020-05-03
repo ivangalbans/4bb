@@ -1,0 +1,7 @@
+(fn [coll]
+  (rest
+    (iterate (fn [coll*]
+               (->> coll*
+                    (partition-by identity)
+                    (mapcat #(vector (count %1) (first %1)))))
+             coll)))
