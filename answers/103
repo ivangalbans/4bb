@@ -1,0 +1,5 @@
+(fn [k st]
+  (let [pwset (reduce (fn [sets x]
+                        (into sets (map #(conj % x) sets)))
+                      #{#{}} st)]
+    (set (filter #(= k (count %)) pwset))))

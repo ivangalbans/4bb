@@ -1,0 +1,8 @@
+(fn [n]
+  (let [factors (cons 2 (iterate (partial + 2) 3))
+        prime?  (fn [n] (not-any? #(zero? (rem n %)) (take-while #(<= % (inc (Math/sqrt n))) factors)))
+        left    (fn [n] (first (filter prime? (iterate #(- % 2) (- n 2)))))
+        right   (fn [n] (first (filter prime? (iterate #(+ % 2) (+ n 2)))))]
+    (and (> n 3)
+         (prime? n)
+         (= n (/ (+ (left n) (right n)) 2)))))
