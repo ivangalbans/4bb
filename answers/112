@@ -1,0 +1,10 @@
+(fn ans [n coll]
+  (loop [sum 0
+         acc []
+         [x & xs] coll]
+    (cond
+      (or (nil? x) (> sum n)) acc
+      (coll? x) (let [coll- (ans (- n sum) x)
+                      sum-  (apply + (flatten coll-))]
+                  (recur (+ sum sum-) (conj acc coll-) xs))
+      :else (recur (+ sum x) (if (> (+ sum x) n) acc (conj acc x)) xs))))
