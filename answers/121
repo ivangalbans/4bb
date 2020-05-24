@@ -1,0 +1,9 @@
+(fn [form]
+  (fn [values]
+    (let [db (merge {'+ + '- - '* * '/ /} values)
+          eval- (fn eval- [form]
+                  (if (seq? form)
+                    (let [[op & args] form]
+                      (apply (get db op) (map eval- args)))
+                    (get db form form)))]
+      (eval- form))))

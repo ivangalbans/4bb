@@ -1,0 +1,6 @@
+(fn [coll]
+  (let [xs      (sort (distinct coll))
+        pairs   (map list xs (rest xs))
+        no-cons (filter #(> -1 (apply - %)) pairs)
+        bounds  (flatten [(take 1 xs) no-cons (last xs)])]
+    (partition 2 bounds)))
