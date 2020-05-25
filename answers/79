@@ -1,0 +1,6 @@
+(fn ans [coll]
+  (first
+   (reduce
+    (fn [v2 v1]
+      (map + (map min (butlast v2) (rest v2)) v1))
+    (reverse coll))))
