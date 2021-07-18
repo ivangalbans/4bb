@@ -1,0 +1,21 @@
+(fn [graph]
+  (letfn [(closure [rel]
+            (let [rel+ (into rel (for [[a b] rel
+                                       [c d] rel
+                                       :when (= b c)]
+                                   [a d]))]
+              (if (= rel rel+)
+                rel
+                (recur rel+))))
+          (undirected [rel]
+            (into rel (for [[a b] rel]
+                        [b a])))]
+    (let [nnodes (-> (mapcat identity graph)
+                     set
+                     count)]
+      (->> (undirected graph)
+           closure
+           (group-by first)
+           (map (fn [[k v]] (count v)))
+           (some #(= nnodes %))
+           boolean))))
