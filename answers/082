@@ -1,0 +1,23 @@
+(fn [words]
+  (letfn [(edit-distance [s1 s2]
+            (let [ns1 (count s1)
+                  ns2 (count s2)
+                  xs1 (apply str (rest s1))
+                  xs2 (apply str (rest s2))]
+              (cond
+                (zero? ns1) ns2
+                (zero? ns2) ns1
+                (= (first s1) (first s2)) (edit-distance xs1 xs2)
+                :else (+ 1 (min (edit-distance xs1 xs2)
+                                (edit-distance s1  xs2)
+                                (edit-distance xs1 s2))))))
+          (permutations [s]
+            (lazy-seq
+             (if (seq (rest s))
+               (apply concat (for [x s]
+                               (map #(cons x %) (permutations (remove #{x} s)))))
+               [s])))
+          (chain? [coll]
+            (every? (fn [d] (= 1 d))
+                    (map #(edit-distance %1 %2) coll (rest coll))))]
+    (boolean (some chain? (permutations words)))))
