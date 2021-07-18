@@ -1,0 +1,8 @@
+(fn [rel]
+  (let [rel+ (into rel (for [[a b] rel
+                             [c d] rel
+                             :when (= b c)]
+                         [a d]))]
+    (if (= rel rel+)
+      rel
+      (recur rel+))))
